@@ -23,11 +23,20 @@ public class MatrixUtil {
         final int matrixSize = matrixA.length;
         final int[][] matrixC = new int[matrixSize][matrixSize];
 
+        final int AT[][] = new int[matrixSize][matrixSize];
+        final int BT[][] = new int[matrixSize][matrixSize];
+        for (int i = 0; i < matrixSize; i++) {
+            for (int j = 0; j < matrixSize; j++) {
+                AT[j][i] = matrixA[i][j];
+                BT[j][i] = matrixB[i][j];
+            }
+        }
+
         for (int i = 0; i < matrixSize; i++) {
             for (int j = 0; j < matrixSize; j++) {
                 int sum = 0;
                 for (int k = 0; k < matrixSize; k++) {
-                    sum += matrixA[i][k] * matrixB[k][j];
+                    sum += AT[i][k] * BT[k][j];
                 }
                 matrixC[i][j] = sum;
             }
