@@ -15,6 +15,10 @@ public class MatrixUtil {
         final int matrixSize = matrixA.length;
         final int[][] matrixC = new int[matrixSize][matrixSize];
 
+        executor.submit(() ->
+                singleThreadMultiply(matrixA, matrixB)
+        );
+
         return matrixC;
     }
 
@@ -39,6 +43,7 @@ public class MatrixUtil {
                         summand += thisRow[k] * thatColumn[k];
                     }
                     matrixC[i][j] = summand;
+                    System.out.println(summand);
                 }
             }
         } catch (IndexOutOfBoundsException e) {
